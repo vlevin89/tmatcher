@@ -5,6 +5,11 @@ from Player import Player
 
 if __name__ == "__main__":
 
+    # use to filter out people who signed up before this date
+    start_year = 2024
+    start_month = 7
+    start_day = 6
+
     players = []
     with open('TMATCHSurvey_v4.tsv', newline='') as csvfile:
         reader = csv.reader(csvfile, delimiter='\t', quotechar='|')
@@ -21,7 +26,7 @@ if __name__ == "__main__":
             email = row[8]
             player = Player(date, name, level, days, email)
 
-            if date > datetime(2024, 7, 6):
+            if date > datetime(start_year, start_month, start_day):
                 players.append(player)
     player_names = set()
     unique_players = []
